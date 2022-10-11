@@ -69,25 +69,25 @@ router.get('/', function(req, res, next) {
   
   });
   router.get('/admin',verifylogin,async function(req, res, next) {
-    console.log('order')
-let totalCancel=0;
-    let orderCount= await Adminhelpers.totalOrder()
-   let totalSales= await Adminhelpers.totalSales()
-    let userCount= await Adminhelpers.userCount()
-    let totalDelivery=await Adminhelpers.totalDelivered()
-     totalCancel=await Adminhelpers.totalCancel()
-    let totalPlaced=await Adminhelpers.totalPlaced()
-    let totalShipped=await Adminhelpers.totalShipped()
-    let codCount= await Adminhelpers.totalCod()
-    let onlineCount= await Adminhelpers.totalOnline()
-    let totalRevenue= await Adminhelpers.totalRevenue()
-    totalRevenue.total= (totalRevenue.total)/20*100
-    console.log(totalCancel,'c');
-    console.log('revenue',totalRevenue,'tp');
-    console.log('count start',userCount,'count');
-    console.log('sales',totalSales,'//');
+//     console.log('order')
+// let totalCancel=0;
+//     let orderCount= await Adminhelpers.totalOrder()
+//    let totalSales= await Adminhelpers.totalSales()
+//     let userCount= await Adminhelpers.userCount()
+//     let totalDelivery=await Adminhelpers.totalDelivered()
+//      totalCancel=await Adminhelpers.totalCancel()
+//     let totalPlaced=await Adminhelpers.totalPlaced()
+//     let totalShipped=await Adminhelpers.totalShipped()
+//     let codCount= await Adminhelpers.totalCod()
+//     let onlineCount= await Adminhelpers.totalOnline()
+//     let totalRevenue= await Adminhelpers.totalRevenue()
+//     totalRevenue.total= (totalRevenue.total)/20*100
+//     console.log(totalCancel,'c');
+//     console.log('revenue',totalRevenue,'tp');
+//     console.log('count start',userCount,'count');
+//     console.log('sales',totalSales,'//');
 
-    res.render('admin/adminIndex', { layout:'adminlayout',orderCount,totalSales,userCount,totalDelivery,totalCancel,totalPlaced,totalShipped,codCount,totalRevenue,onlineCount});
+    res.render('admin/adminIndex', { layout:'adminlayout'});
     
    });
   
