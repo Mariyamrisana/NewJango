@@ -1,0 +1,113 @@
+ 
+<div class="container mt-5">
+ <div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+             
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+ <div class="container mt-5">
+    
+            <form action="/editProfile/{{userData._id}}" method="post" enctype="multipart/form-data">
+            <div class="text-center mb-3">
+     <h3 class="w-100">Edit Profile</h3></div>
+            <div class="row h-100 w-100 align-items-center justify-content-center d-flex" style="min-height: 100vh;">
+                 
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 ">
+                    <div class="bg-light rounded p-2 p-sm-5 my-4 mx-3">
+                        <div class="d-flex text-center mb-3">
+                            
+                           
+
+                            <h2 class="w-100">Details</h2>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                             <label for="floatingText">First Name</label>
+                            <input type="text" class="form-control" value="{{userData.Firstname}}" id="floatingText" placeholder="" name="Firstname">
+                           
+                        </div>
+                         <div class="form-floating mb-3">
+                             <label for="floatingText">Last Name</label>
+                            <input type="text" class="form-control" value="{{userData.Lastname}}" id="floatingText" placeholder="" name="Lastname">
+                           
+                        </div>
+                        <div class="form-floating mb-3">
+                             <label for="floatingText">Description</label>
+                            <input type="text" class="form-control" value="{{userData.email}}" id="floatingText" placeholder="Email" name="email">
+                           
+                        </div>
+
+                       
+                       <div class="form-floating mb-3">
+                        <img src="/userprofile/{{userData._id}}_user.jpg" width="100px" height="80px" alt="" id="imgView">
+                       </div>
+                         <div class="form-floating mb-3">
+                             <label for="floatingFile">Image</label>
+                            <input type="file" class="form-control" id="floatingFile" placeholder="Image" value="/userprofile/{{userData._id}}_user.jpg" name="userimage" onchange="viewImage(event)">
+                           
+                        </div>
+                         
+                    </div>
+
+
+                 
+                       
+                        
+                       
+                </div>
+                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 ">
+                <div class="bg-light rounded p-2 p-sm-5 my-4 mx-2">
+                      <div class="d-flex text-center mb-2">
+                            
+                           
+
+                            <h2 class="w-100">Address</h2>
+                        </div>
+                        
+                       <div class="form-floating mb-3">
+                         <label for="floatingText">Country</label>
+                            <input type="text" class="form-control" value="{{userData.address.country}}" id="floatingText" placeholder="" name="country">
+                           
+                        </div>
+                         <div class="form-floating mb-3">
+                             <label for="floatingText">State</label>
+                            <input type="text" class="form-control" value="{{userData.address.state}}" id="floatingText" placeholder="" name="state">
+                           
+                        </div> <div class="form-floating mb-3">
+                             <label for="floatingText">District</label>
+                            <input type="text" class="form-control" value="{{userData.address.district}}" id="floatingText" placeholder="" name="district">
+                           
+                        </div> <div class="form-floating mb-3">
+                             <label for="floatingText">Place</label>
+                            <input type="text" class="form-control" value="{{userData.address.place}}" id="floatingText" placeholder="" name="place">
+                           
+                        </div>
+                         <div class="form-floating mb-3">
+                             <label for="floatingNumber">Mobile</label>
+                            <input type="text" class="form-control" value="{{userData.address.mobile}}" id="floatingNumber" placeholder="" name="mobile">
+                           
+                        </div>
+                         <div class="form-floating mb-3">
+                             <label for="floatingNumber">Pincode</label>
+                            <input type="text" class="form-control" value="{{userData.address.pincode}}" id="floatingNumber" placeholder="" name="pincode">
+                           
+                        </div>
+                       <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
+                   </div>    
+                  </div>     
+                       
+            </div>
+            </form>
+        </div>
+
+        <script>
+            function viewImage(event){
+                document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+            }
+        </script>

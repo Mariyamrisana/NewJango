@@ -1,0 +1,43 @@
+ 
+        <div class="container-fluid">
+            <form action="/admin/editBanner/{{bannerData._id}}" method="post" enctype="multipart/form-data">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex text-center mb-3">
+                            
+                            <h3 class="w-100">Edit banner</h3>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" value="{{bannerData.bannerCategory}}" id="floatingText" placeholder="Email" name="bannerCategory">
+                            <label for="floatingText">Category</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" value="{{bannerData.bannerDescription}}" id="floatingText" placeholder="Email" name="bannerDescription">
+                            <label for="floatingText">Description</label>
+                        </div>
+                       
+                       <div class="form-floating mb-3">
+                        <img src="/banner-image/{{bannerData._id}}.jpg" width="100px" height="80px" alt="" id="imgView">
+                       </div>
+                         <div class="form-floating mb-3">
+                            
+                            <input type="file" class="form-control" id="floatingFile" placeholder="Image" name="image" onchange="viewImage(event)">
+                            <label for="floatingFile">Image</label>
+                        </div>
+                       
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
+                       
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <script>
+            function viewImage(event){
+                document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+            }
+        </script>
+        <!-- Si

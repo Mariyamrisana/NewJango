@@ -1,0 +1,71 @@
+<script type="text/javascript">
+ function hclick(){
+    console.log('hhhhhhhh')
+    let addcat= document.getElementById('inputbox');
+     let btn1= document.getElementById('btn');
+
+    if(addcat.style.display=='none'){
+        addcat.style.display='block';
+        btn1.style.display='none';
+    }else{
+        addcat.style.display='none'
+    }
+  }
+</script>
+<div class="content">
+            
+   <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h4 class="mt-3 text-white">Category List</h4>
+                            
+                            <div class="text-right"> 
+                                <div class="text-right" style="display:none;" id="inputbox">
+                            <form action="/admin/addcategory" method="post">
+                        
+                            <input type="text" name="category-name">
+                           
+                            <button type="submit" class="btn btn-success m-2">Add Category</button>
+                            </form> </div>
+                            <button type="button" class="btn btn-success m-2" id="btn" onclick="hclick()">Add Category</button>
+                            </div>
+
+
+                        
+
+                            <table class="table table-hover text-white" id="catTable" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Slno</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Edit/Delete</th>
+                                       
+                                    </tr>
+                                </thead>
+                                {{#each categories}}
+                                <tbody>
+                                    
+                                    <tr>
+                                        <th scope="row">{{inc @index}}</th>
+                                       
+                                        <td>{{this.category-name}}</td>
+                                       
+                                        <td><button type="button" class="btn btn-outline-danger m-2"><a href="/admin/delete/{{this._id}}" class="text-decoration-none text-white">Delete</a> </button></td>
+                                    </tr>
+                                     
+                                </tbody>
+                                {{/each}}
+                            </table>
+<script>
+    $(document).ready(function () {
+
+
+        $('#catTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#catTable').DataTable();
+</script>  

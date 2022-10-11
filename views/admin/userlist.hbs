@@ -1,0 +1,61 @@
+
+
+  
+  
+
+  
+  
+  <div class="content">
+            
+   <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h4 class="mt-3 text-white" >Users List</h4>
+                            
+                            <table class="table table-hover text-white" id="user-table" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sl No</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">email</th>
+                                          <th scope="col">Block/Unblock</th>
+                                    </tr>
+                                </thead>
+                                {{#each users}}
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{inc @index}}</th>
+                                        <td>{{this.Firstname}}</td>
+                                        <td>{{this.Lastname}}</td>
+                                        <td>{{this.email}}</td>
+                                        <td>
+                                        {{#if userblocked}}
+                                         <a href="/admin/unblockUser/{{this._id}}"> <button type="button" id="blockbtn" class="btn btn-outline-warning m-2">Unblock</button></a>
+                                        {{else}}
+                                        <a href="/admin/blockUser/{{this._id}}"><button type="button" class="btn btn-outline-danger m-2">Block</button></a>
+                                        {{/if}} 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {{/each}}
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+  </div>
+<script>
+    $(document).ready(function () {
+
+
+        $('#user-table').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#user-table').DataTable();
+</script>

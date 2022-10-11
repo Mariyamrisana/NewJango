@@ -1,0 +1,42 @@
+  <div class="container-fluid">
+            <form action="/admin/addCoupen" method="post" enctype="multipart/form-data">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex text-center mb-3">
+                            
+                            <h3 class="w-100">Add Coupon</h3>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" placeholder="Email" name="code" required>
+                            <label for="floatingText">Coupen Code</label>
+                        </div> 
+                       
+                        
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingNumber" placeholder="Price" name="crieteria" required>
+                            <label for="floatingNumber">Crieteria</label>
+                        </div>
+                         <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingNumber" placeholder="Price" name="percentage" required>
+                            <label for="floatingNumber">Offer</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="floatingDate" placeholder="date" name="fromDate" required>
+                            <label for="floatingDate">Valid From</label>
+                        </div>
+                     <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="floatingDate" placeholder="date" name="expDate" required>
+                            <label for="floatingDate">Valid Upto</label>
+                        </div>
+                    
+                        
+                       
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
+                       
+                    </div>
+                </div>
+               </div>
+            </form>
+        </div>
+        <!-- Si

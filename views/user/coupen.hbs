@@ -1,0 +1,73 @@
+<div class="container mt-5">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+			Coupen
+			</span>
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+	
+		<div class="container mt-5 order-table">
+			<div class="row orderTable">
+				<div class="col-lg-12 col-xl-11 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class=" p-t-18 p-b-15 p-lr-40 p-lr-15-sm text-right" >
+						
+							
+						</div>
+						
+						<div class="wrap-table-shopping-cart">
+							
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+								<th class="column-1 text-center">Sl No</th>
+								<th class="column-2 text-center">Coupon Code</th>
+                <th class="column-3 text-center">Crieteria</th>	
+                <th class="column-4 text-center">Offer</th>
+								<th class="column-5 text-center">From Date</th>	
+                <th class="column-6 text-center">EXP Date</th>
+								</tr>
+                                {{#each coupenData}}
+								
+								
+								<tr class="table_row">
+                                   
+									<td class="column-1">
+										
+										{{inc @index}}
+										
+									</td>
+                                   
+									<td class="column-2 text-center">{{this.code}}</td>
+									<td class="column-3 text-center">{{this.crieteria}}</td>
+
+									<td class="column-4 text-center">
+										{{this.percentage}}
+									</td>
+									
+                                   
+								<td class="column-5 text-center">
+										{{this.fromDate}}
+									</td>
+                                    
+                <th class="column-6 text-center">{{this.expDate}}</th>
+                                </tr>
+								
+                                {{/each}}
+							</table>
+						</div>
+
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+	

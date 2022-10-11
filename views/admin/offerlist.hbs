@@ -1,0 +1,53 @@
+  <div class="content">
+            
+   <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h3 class="mt-4 text-white">Offers</h3>
+                             <div class="text-right"> <a href="/admin/addCoupen"><button type="button" class="btn btn-outline-success   mb-3">Add Coupen</button></a></div>
+                            <table class="table table-hover text-white" id="offertable" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sl no</th>
+                                        <th scope="col">Coupen Code</th>
+                                        <th scope="col">Crieteria</th>
+                                        <th scope="col">Offer Percentage</th>
+                                        <th scope="col">Valid From</th>
+                                        <th scope="col">Valid Upto</th>
+                                        {{!-- <th scope="col">Count</th> --}}
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each coupenData}}
+                                    <tr>
+                                        <th scope="row">{{inc @index}}</th>
+                                        <td>{{this.code}}</td>
+                                        <td>{{this.crieteria}}</td>
+                                        <td>{{this.percentage}}</td>
+                                        <td>{{this.fromDate}}</td>
+                                         <td>{{this.expDate}}</td>
+                                         {{!-- <td>{{this.count}}</td> --}}
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                              </div>
+                    </div>
+                </div>
+            </div>
+  </div>
+                            <script>
+    $(document).ready(function () {
+
+
+        $('#offertable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#offertable').DataTable();
+</script>
+                      

@@ -1,0 +1,114 @@
+<div class="container mt-5">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Shoping Cart
+			</span>
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-3">Price</th>
+									<th class="column-4 text-center">Quantity</th>
+									<th class="column-5 text-center ">Remove</th>
+									
+								</tr>
+                                {{#each products}}
+								<tr class="table_row">
+                                   
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="/images/{{this.product._id}}_1.jpg" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">{{this.product.Pro-name}}</td>
+									<td class="column-3">{{this.product.price}}</td>
+
+									<td class="column-4 text-center">
+										<div class="d-flex text-center" >
+											
+												<button class="btn-dark ml-4"style="width:25px; height: 25px; " onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../uservalue}}',-1)" >-</button>
+                                              
+
+										<span id="{{this.product._id}}" class="mx-2 ">{{this.quantity}}</span>
+											
+												<button  class="btn-dark " style="width:25px; height: 25px;" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../uservalue}}',1)">+</i></button>
+											
+									</div>
+									</td>
+									<td class="column-5 text-center"><button type="button" class="btn btn-danger m-2" onclick="productDelete1('{{this.product._id}}')">Remove</button></td>
+								</tr>
+                                {{/each}}
+							</table>
+						</div>
+						
+						<div class=" bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm d-flex " >
+							
+							<h4 class=" mt-3 flex-end cartx">Rs. <span id="totalvalue">{{total}}</span></h4>
+							<a href="/checkout" class="text-decoration-none">
+							<button class="cartx stext-101 cl0 px-3 py-2 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer ml-3 my-2">
+							Proceed to Checkout
+							</button></a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script>
+        function changeQuantity(cartId,proId,userId,count){
+			let quantity=parseInt(document.getElementById(proId).innerHTML)
+			count=parseInt(count)
+            $.ajax({
+                 
+                url:'/change-product-quantity',
+                data:{
+				uservalue:userId,
+                cart:cartId,
+                product:proId,
+                count:count,
+                quantity:quantity
+                },
+                method:'post',
+						success:(response)=>{
+					if(response.removeProduct){
+						alert("product removed from cart")
+						location.reload()
+					}else{
+
+									document.getElementById(proId).innerHTML=quantity+count
+									document.getElementById('totalvalue').innerHTML=response.total
+								}
+							}
+						})
+				}
+				function productDelete1(proId){
+					$.ajax({
+						url:'/cart-product-delete1/'+proId,
+					
+						method:'get',
+						success:(response)=>{
+							location.reload()
+						}
+					})
+					
+				}
+				
+    </script>	
+	
+		

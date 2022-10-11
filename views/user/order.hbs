@@ -1,0 +1,103 @@
+<div class="container mt-5">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Order List
+			</span>
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+	
+		<div class="container mt-5 order-table">
+			<div class="row orderTable">
+				<div class="col-lg-12 col-xl-11 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class=" p-t-18 p-b-15 p-lr-40 p-lr-15-sm text-right" >
+							
+							<h2 class="text-success  text-left"><b> Order Details </b></h3>
+							<a href="/product" class="text-decoration-none">
+							<button class="cartx stext-101 cl0 px-3 py-2 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer ml-3 mb-4">
+							Continue Shopping
+							</button></a>
+							
+							
+						</div>
+						
+						<div class="wrap-table-shopping-cart">
+							
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Date</th>
+									
+									<th class="column-2 text-center">Place</th>
+									<th class="column-3 text-center">pincode</th>
+                                    <th class="column-4 text-center">Mobile</th>
+                                    <th class="column-5 text-center">Payment</th>
+                                  
+                                    <th class="column-6 text-center">Total</th>
+									
+                                    <th class="column-7 text-center">View Products</th>
+									
+									
+								</tr>
+                                {{#each order}}
+								
+								 {{#unless amountzero}}
+								
+								<tr class="table_row">
+                                   
+									<td class="column-1">
+										
+										{{this.date}}
+										
+									</td>
+                                   
+									<td class="column-2 text-center">{{this.address.place}}</td>
+									<td class="column-3 text-center">{{this.address.pincode}}</td>
+
+									<td class="column-4 text-center">
+										{{this.address.mobile}}
+									</td>
+									
+                                   
+								<td class="column-5 text-center">
+										{{this.status}}
+									</td>
+                                    {{#if Amount}}
+									 <td class="column-6 text-center">{{this.totalAmount}}</td>
+									 {{/if}}
+									 {{#unless Amount}}
+                                     <td class="column-6 text-center">{{this.total}}</td>
+									 {{/unless}}
+                                     <td class="column-7 text-center ">
+										{{#if cancel}}
+										<p class="text-danger">*Your Order has been canceled</p>
+										{{/if}}
+										{{#unless cancel}}
+                                        <a href="/viewOrderList/{{this._id}}" class="btn btn-success">View Product</a>
+										 <a href="/orderTrack/{{this._id}}" class="btn btn-primary">Track Order</a>
+										 <a href="/invoice/{{this._id}}" class="btn btn-warning">Invoice</a>
+										 {{/unless}}
+										</td>
+										
+										
+                                </tr>
+							{{/unless}}
+                                {{/each}}
+								
+							</table>
+						</div>
+
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+	
