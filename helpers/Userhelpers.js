@@ -5,13 +5,13 @@ var bcrypt=require('bcrypt')
 var objectId=require('mongodb').ObjectId
 const Razorpay = require('razorpay');
 const nodemailer= require ('nodemailer');
-const { info } = require('console');
-
+const dotenv=require('dotenv')
+dotenv.config()
 
 
 var instance = new Razorpay({
-  key_id: process.env.Razorpay_Id ,
-  key_secret: process.env.Razorpay_Key,
+  key_id: 'rzp_test_1DouVUNKe6VpG6',
+  key_secret: '70bjyUhHNET0JZLPQU0k8Hxb',
 });
 
 
@@ -653,7 +653,7 @@ verifyPayment:(details)=>{
         console.log(details,'details');
         console.log(details['payment[razorpay_order_id]'],'::razorpay');
         let crypto=require('crypto')
-        let hmac = crypto.createHmac('sha256','aT61nncuVeI8sSkw5cNUbLEi')
+        let hmac = crypto.createHmac('sha256','70bjyUhHNET0JZLPQU0k8Hxb')
         hmac.update(details['payment[razorpay_order_id]']+'|'+ details['payment[razorpay_payment_id]'])
        
         hmac=hmac.digest('hex')
