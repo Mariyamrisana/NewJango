@@ -750,6 +750,54 @@ getUserdata:(userId)=>{
             }
             console.log(usedStatus[0],'status coupon');
         })
+    },
+    getWomen:()=>{
+        return new Promise(async(res,rej)=>{
+            try{
+                let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({category:"Women"}).toArray()
+                res(products)
+                console.log('getallProducts');
+            }catch(err){
+                rej(err)
+            }
+            
+        })
+    },
+    getCasual:()=>{
+        return new Promise(async(res,rej)=>{
+            try{
+                let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({category:"Casuals"}).toArray()
+                res(products)
+                console.log('getallProducts');
+            }catch(err){
+                rej(err)
+            }
+            
+        })
+    },
+    getMen:()=>{
+        return new Promise(async(res,rej)=>{
+            try{
+                let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({category:"Men"}).toArray()
+                res(products)
+                console.log('getallProducts');
+            }catch(err){
+                rej(err)
+            }
+            
+        })
+    },
+    getAccessories:()=>{
+        return new Promise(async(res,rej)=>{
+            try{
+                let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({category:"Accessories"}).toArray()
+                res(products)
+                console.log('getallProducts');
+            }catch(err){
+                rej(err)
+            }
+            
+        })
     }
    
 }

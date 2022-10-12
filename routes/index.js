@@ -357,17 +357,76 @@ if(req.session.uservalue){
    wishlistCount=await Userhelpers.getWishlistCount(req.session.uservalue._id)
    console.log(cartCount);
   }
-      Adminhelpers.getAllproducts().then((products)=>{
+    await  Adminhelpers.getAllproducts().then((products)=>{
+        for(i=0;i<products.length;i++){
+          if(products[i].category='Casuals'){
+            products[i].casual=true
+          }
+        }
         res.render('user/product', { layout:'userlayout',products,cartCount,wishlistCount });
         
     })
  
   
  });
- 
+ router.get('/women',verifylogin,async function(req, res, next){
+  let cartCount=null
+  let wishlistCount=null
+if(req.session.uservalue){
+ cartCount=await Userhelpers.getCartCount(req.session.uservalue._id)
+ wishlistCount=await Userhelpers.getWishlistCount(req.session.uservalue._id)
+ console.log(cartCount);
+}
+  await Userhelpers.getWomen().then((products)=>{
+      
+      res.render('user/product', { layout:'userlayout',products,cartCount,wishlistCount });
+      
+  })
+ } )
+ router.get('/casual',verifylogin,async function(req, res, next){
+  let cartCount=null
+  let wishlistCount=null
+if(req.session.uservalue){
+ cartCount=await Userhelpers.getCartCount(req.session.uservalue._id)
+ wishlistCount=await Userhelpers.getWishlistCount(req.session.uservalue._id)
+ console.log(cartCount);
+}
+  await Userhelpers.getCasual().then((products)=>{
+     
+      res.render('user/product', { layout:'userlayout',products,cartCount,wishlistCount });
+      
+  })
+ } )
 
- 
+ router.get('/men',verifylogin,async function(req, res, next){
+  let cartCount=null
+  let wishlistCount=null
+if(req.session.uservalue){
+ cartCount=await Userhelpers.getCartCount(req.session.uservalue._id)
+ wishlistCount=await Userhelpers.getWishlistCount(req.session.uservalue._id)
+ console.log(cartCount);
+}
+  await Userhelpers.getMen().then((products)=>{
+     
+      res.render('user/product', { layout:'userlayout',products,cartCount,wishlistCount });
+      
+  })
+ } )
 
+ router.get('/accessories',verifylogin,async function(req, res, next){
+  let cartCount=null
+  let wishlistCount=null
+if(req.session.uservalue){
+ cartCount=await Userhelpers.getCartCount(req.session.uservalue._id)
+ wishlistCount=await Userhelpers.getWishlistCount(req.session.uservalue._id)
+ console.log(cartCount);
+}
+  await Userhelpers.getAccessories().then((products)=>{
+     
+      res.render('user/product', { layout:'userlayout',products,cartCount,wishlistCount });
+      
+  })
+ } )
 router.get('/add-to-cart/:id',verifylogin,(req,res)=>{
   
   console.log('cartedsssss');
