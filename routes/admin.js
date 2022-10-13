@@ -298,13 +298,13 @@ let totalCancel=0;
    
   });
   
-  router.post('/addproduct',verifylogin, function(req, res, next) {
+  router.post('/addproduct',verifylogin,async function(req, res, next) {
     console.log(req.body);
     console.log(req.files.image);
     console.log(req.body.proname);
 
     
-    Adminhelpers.addProduct(req.body).then((product)=>{
+   Adminhelpers.addProduct(req.body).then((product)=>{
       console.log(product,'::::::::::::::::::::::');
       var img1=req.files.image
       var img2=req.files.image2
@@ -312,18 +312,18 @@ let totalCancel=0;
 
 
       console.log(product.insertedId );
-      img1.mv('./public/images/'+product.insertedId+'_1.jpg')
+    img1.mv('./public/images/'+product.insertedId+'_1.jpg')
        
       img2.mv('./public/images/'+product.insertedId+'_2.jpg')
       img3.mv('./public/images/'+product.insertedId+'_3.jpg')
-      res.redirect('/admin/productlist')
+     
        
       
      
   
     })
     
-    
+    res.redirect('/admin/productlist')
    
   });
   router.post('/addSlider',verifylogin, function(req, res, next) {
